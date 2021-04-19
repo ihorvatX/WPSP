@@ -2,7 +2,6 @@
 include 'classes.php';
 
 $oConnParam = new Configuration("127.0.0.1", "employees", "root","");
-var_dump($oConnParam);
 
 try
 {

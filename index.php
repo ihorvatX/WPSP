@@ -13,8 +13,6 @@ $oResult = $oConnection->query($query);
 <html>
 <body>
 
-<h2>Basic HTML Table</h2>
-
 <table style="width:100%">
   <tr>
     <th>Rbr.</th>

@@ -14,12 +14,11 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></scri
 <body>
  <div class="container">
  <div class="jumbotron">
- <h1>Početna</h1>
+ <h1>Naslov</h1>
  </div>
  <div class="row">
-    <a href="zaposlenici.php" class="btn btn-primary btn-lg btn-block">Zaposlenici</a>
-    <a href="odjeli.php" class="btn btn-default btn-lg btn-block">Odjeli</a>
  </div>
  </div>
+ <script src="js/odjeli.js"></script>
 </body>
 </html>

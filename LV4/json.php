@@ -7,7 +7,7 @@ if(isset($_GET['json_id']) || isset($_GET['employee_id']))
     switch($_GET['json_id'])
     {
         case "get_all_employees":
-
+            ini_set('memory_limit', '2048M');
             $query = "SELECT * FROM employees";
             $oResult = $oConnection->query($query);
             $rows = array();
@@ -34,9 +34,10 @@ if(isset($_GET['json_id']) || isset($_GET['employee_id']))
                 while($oRow = $oResult->fetch(PDO::FETCH_BOTH)) {
                     $rows[] = $oRow;
                     }
+                // echo json_encode($rows);
                 echo json_encode($rows);
 
-                break;
+            break;
     }
 }
 

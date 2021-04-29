@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <title>Bootstrap Example</title>
+ <title>Zaposlenici</title>
  <meta charset="utf-8">
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="stylesheet"
@@ -10,11 +10,20 @@ href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
  <script
 src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 <body>
  <div class="container">
  <div class="jumbotron">
- <h1>Naslov</h1>
+ <div class="row">
+ <div class="col-sm-6">
+ <h1>Zaposlenici</h1>
+ </div>
+
+<div class="col-sm-2 col-sm-offset-4" style="margin-top: 2%;">
+ <a class="btn btn-primary btn-lg" href="index.php" role="button">Početna</a>
+</div>
+ </div>
  </div>
  <div class="modal fade" id="modals" tabindex="-1" role="dialog" aria-labelledby=""
 aria-hidden="true">
@@ -37,12 +46,11 @@ aria-hidden="true">
         <th>Last Name</th> 
         <th>Gender</th>
         <th>Hire date</th>
-        <th><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></th>
-        <th><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></th>
+        <th>Uredi</th>
+        <th>Obriši</th>
     </tr> 
     </thead> 
     <tbody> 
-
     </tbody> 
 </table>
  </div>
@@ -51,3 +59,4 @@ aria-hidden="true">
  <script src="js/global.js"></script>
 </body>
 </html>
+

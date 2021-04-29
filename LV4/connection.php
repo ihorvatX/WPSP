@@ -1,7 +1,7 @@
 <?php
 include 'classes.php';
 
-$oConnParam = new Configuration("127.0.0.1", "employees", "root","");
+$oConnParam = new Configuration("localhost", "employees", "root", "root");
 
 try
 {
@@ -10,7 +10,7 @@ try
 }
 catch (PDOException $pe)
 {
-    die("Could not connect to the database $dbname :" . $pe->getMessage());
+    // die("Could not connect to the database $oConnParam->dbname :" . $pe->getMessage());
 }
 
 

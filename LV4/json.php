@@ -18,7 +18,7 @@ if(isset($_GET['json_id']) || isset($_GET['employee_id']))
             break;
 
             case "get_all_departments":
-                $query = "SELECT * FROM departments";
+                $query = "SELECT * FROM departments ORDER BY dept_no";
                 $oResult = $oConnection->query($query);
                 $rows = array();
                 while($oRow = $oResult->fetch(PDO::FETCH_BOTH)) {

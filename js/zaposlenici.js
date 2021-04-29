@@ -1,34 +1,16 @@
-(function()
-{
+(function () {
     LoadEmployees();
-
-    $("#tableEmp").on('click',".glyphicon-edit",function() {
-        var $row = $(this).closest("tr");    
-        console.log($row)
-        var $tds = $row.find("td");
-
-
-        $.each($tds, function() {
-            console.log($(this));
-        });
-        
-    });
-  
-
-
 })();
 
 
-function LoadEmployees()
-{
+function LoadEmployees() {
     $.ajax(
         {
             url: "LV4/json.php?json_id=get_all_employees",
             type: "GET",
-            success: function (oData)
-            {
+            success: function (oData) {
                 var obj = JSON.parse(oData);
-                
+
                 obj.forEach((element, index) => {
                     $('#tableEmp > tbody').append(`<tr> 
                     <td>${index}</td> 
@@ -38,13 +20,106 @@ function LoadEmployees()
                     <td>${element["last_name"]}</td> 
                     <td>${element["gender"]}</td> 
                     <td>${element["hire_date"]}</td> 
-                    <td><span class="glyphicon glyphicon-edit" aria-hidden="true"></td>
-                    <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></td>
+                    <td><span style="cursor: pointer" class="glyphicon glyphicon-edit" onclick="GetModal('modals.php?modal_id=edit_employee&emp_id=${element["emp_no"]}')" aria-hidden="true"></td>
+                    <td><span style="cursor: pointer" class="glyphicon glyphicon-remove" onclick="GetModal('modals.php?modal_id=delete_employee&emp_id=${element["emp_no"]}')" aria-hidden="true"></td>
                     </tr>`);
                 });
 
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
             }
         }
     )
 }
 
+function Clear()
+{
+    $('#tableEmp tbody').empty();
+    $('#modals').modal('hide')
+}
+
+
+
+
+
+function Save() {
+    var result = $('form#addEmployee :input').serialize();
+
+    $.ajax(
+        {
+            async: false,
+            url: "LV4/action.php",
+            type: "POST",
+            data: result,
+            success: function (response) {
+                alert(response);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+        }
+    )
+
+    Clear();
+    LoadEmployees();
+
+    $('form#addEmployee :input').each(function()
+    {
+        $(this).val("");
+    })
+
+    
+}
+
+
+function Edit()
+{
+    var result = $('form#editEmployee :input').serialize();
+
+    $.ajax(
+        {
+            async: false,
+            url: "LV4/action.php",
+            type: "POST",
+            data: result,
+            success: function (response) {
+                alert(response);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+        }
+    )
+    
+    Clear();
+    LoadEmployees();
+}
+
+
+function Delete()
+{
+    var result = $('form#deleteEmployee :input:lt(2)').serialize();
+
+    console.log(result);
+
+    $.ajax(
+        {
+            async: false,
+            url: "LV4/action.php",
+            type: "POST",
+            data: result,
+            success: function (response) {
+                alert(response);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+        }
+    )
+    
+    
+
+    Clear();
+    LoadEmployees();
+}
